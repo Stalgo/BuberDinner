@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+{
+  "name": ".NET Core Launch (https)",
+  "type": "coreclr",
+  "request": "launch",
+  "program": "${workspaceFolder}/BuberDinner.Api/bin/Debug/net8.0/BuberDinner.Api.dll",
+  "cwd": "${workspaceFolder}/BuberDinner.Api",
+  "stopAtEntry": false,
+  "console": "integratedTerminal",
+  "env": {
+    "DOTNET_LAUNCH_PROFILE": "https"
+  }
+}
+,
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
+    }
+  ]
+}
