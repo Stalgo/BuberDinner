@@ -3,6 +3,7 @@ using BuberDinner.Application.Common.Errors;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Services.Persistence;
 using BuberDinner.Domain.Entities;
+using FluentResults;
 
 namespace BuberDinner.Application.Services.Authentication
 {
@@ -37,12 +38,12 @@ namespace BuberDinner.Application.Services.Authentication
             return new AuthenticationResult(user, token);
         }
 
-        public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+        public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
         {
             // 1. Validate that the user doesnt exist
             if (_userRepository.GetUserByEmail(email) is not null)
             {
-                throw new DuplicateEmailException("User with the given email already exists");
+                return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
             }
 
             // 2.  create user (generate unique id) and persist to db
