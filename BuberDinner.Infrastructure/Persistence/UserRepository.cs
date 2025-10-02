@@ -5,7 +5,7 @@ namespace BuberDinner.Infrastructure.Persistence
 {
     public class UserRepository : IUserRepository
     {
-        private static readonly List<User> _users = new List<User>();
+        private static readonly List<User> _users = [];
 
         // public IReadOnlyList<User> Users => _users.AsReadOnly();
 

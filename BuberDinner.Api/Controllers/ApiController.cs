@@ -10,8 +10,8 @@ namespace BuberDinner.Api.Controllers
         protected IActionResult Problem(List<Error> errors)
         {
             HttpContext.Items[HttpContextItemKeys.Errors] = errors;
-            var firstError = errors[0];
-            var statusCode = firstError.Type switch
+            Error firstError = errors[0];
+            int statusCode = firstError.Type switch
             {
                 ErrorType.Conflict => StatusCodes.Status409Conflict,
                 ErrorType.Validation => StatusCodes.Status400BadRequest,

@@ -11,12 +11,15 @@ namespace BuberDinner.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastucture(this IServiceCollection services, ConfigurationManager configurationManager)
+        public static IServiceCollection AddInfrastucture(
+            this IServiceCollection services,
+            ConfigurationManager configurationManager
+        )
         {
-            services.Configure<JwtSettings>(configurationManager.GetSection(JwtSettings.SectionName));
-            services.AddSingleton<IJwtTokenGenerator, jwtTokenGenerator>();
-            services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            _ = services.Configure<JwtSettings>(configurationManager.GetSection(JwtSettings.SectionName));
+            _ = services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+            _ = services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            _ = services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }
