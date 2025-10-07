@@ -14,10 +14,7 @@ namespace BuberDinner.Api.Models
 
             (int statusCode, string message) = exception switch
             {
-                IServiceException serviceException => (
-                    (int)serviceException.StatusCode,
-                    serviceException.ErrorMessage
-                ),
+                IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
                 _ => (StatusCodes.Status500InternalServerError, "An  unexpected error ocurred"),
             };
             return Problem(statusCode: statusCode, title: message);
