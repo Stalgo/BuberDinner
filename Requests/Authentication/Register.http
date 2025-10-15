@@ -1,12 +1,13 @@
+###
 
-@host=https://localhost:7056
+@host = https://localhost:7056
 
-POST {{host}}/auth/register
+POST {{host}}/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstname": "",
-    "lastname": "",
-    "email": "ola@nordmann.com",
-    "password": "testpass"
+  "email": "ola@nordmann.com",
+  "firstname": "",
+  "lastname": "",
+  "password": "testpass"
 }
