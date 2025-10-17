@@ -6,7 +6,6 @@ namespace BuberDinner.Domain.Menu
 {
     public sealed class Menu : AggregateRoot<MenuId>
     {
-        public Guid Id = new();
         private readonly List<MenuSection> _sections = [];
         public string Name { get; } = string.Empty;
         public string Description { get; } = string.Empty;
