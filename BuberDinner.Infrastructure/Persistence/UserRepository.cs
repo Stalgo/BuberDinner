@@ -1,5 +1,5 @@
 using BuberDinner.Application.Common.Inferfaces.Persistence;
-using BuberDinner.Domain.Entities;
+using BuberDinner.Domain.User.Entities;
 
 namespace BuberDinner.Infrastructure.Persistence
 {

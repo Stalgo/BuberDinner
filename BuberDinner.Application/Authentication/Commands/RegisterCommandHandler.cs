@@ -2,7 +2,7 @@ using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Common.Inferfaces.Persistence;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Domain.Common.Errors;
-using BuberDinner.Domain.Entities;
+using BuberDinner.Domain.User.Entities;
 using ErrorOr;
 using MediatR;
 
@@ -20,7 +20,10 @@ namespace BuberDinner.Application.Authentication.Commands.Register
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
-        public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
+        public async Task<ErrorOr<AuthenticationResult>> Handle(
+            RegisterCommand command,
+            CancellationToken cancellationToken
+        )
         {
             // 1. Validate that the user doesnt exist
             if (_userRepository.GetUserByEmail(command.Email) is not null)

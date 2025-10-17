@@ -1,4 +1,4 @@
-namespace BuberDinner.Domain.Entities
+namespace BuberDinner.Domain.User.Entities
 {
     // Using primary constructor
     public class User(string firstName, string lastName, string email, string password)
