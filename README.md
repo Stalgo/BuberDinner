@@ -122,15 +122,15 @@ class User {
 }
 
 %% Relationships between aggregates
-Host "0" --> "*" Menu : manages
-Menu "0" --> "*" Dinner : includes
-Host "0" --> "*" Dinner : organizes
-Dinner "0" --> "*" Bill : generates
-Dinner "0" *-- "*" Reservation : has
-Guest "0" *-- "*" GuestRating : has
-MenuReview "*" --> "0" Menu : reviews
-MenuReview "*" --> "0" Guest : writtenBy
-Guest "0" --> "1" User : BelongsTo
-Host "*" --> "0" User : linkedTo
+Host "1" --> "*" Menu : manages
+Menu "1" --> "*" Dinner : includes
+Host "1" --> "*" Dinner : organizes
+Dinner "1" --> "*" Bill : generates
+Dinner "1" *-- "*" Reservation : has
+Guest "1" *-- "*" GuestRating : has
+MenuReview "*" --> "1" Menu : reviews
+MenuReview "*" --> "1" Guest : writtenBy
+Guest "1" --> "1" User : BelongsTo
+Host "*" --> "1" User : linkedTo
 
 ```
