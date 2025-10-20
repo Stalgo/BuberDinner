@@ -5,6 +5,7 @@ namespace BuberDinner.Domain.Menu
 {
     public sealed class Menu : AggregateRoot<Guid>
     {
+        //using raw guid, less duplication
         private readonly List<MenuSection> _sections = [];
         private readonly List<Guid> _dinnerIds = [];
         private readonly List<Guid> _menuReviewId = [];
@@ -15,7 +16,7 @@ namespace BuberDinner.Domain.Menu
         public IReadOnlyList<Guid> DinnerIds => _dinnerIds.ToList();
 
         // same domain, might consider using abstracted id here
-        public IReadOnlyList<Guid> MenuReviewIds => _dinnerIds.ToList();
+        public IReadOnlyList<Guid> MenuReviewIds => _menuReviewId.ToList();
 
         public Guid HostId { get; }
         public DateTime CreatedDateTime { get; }
