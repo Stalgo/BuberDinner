@@ -5,7 +5,7 @@ using BuberDinner.Domain.Menu.ValueObjects;
 namespace BuberDinner.Domain.Menu
 { //records
     // semantic boundries for larger projects, without violating context
-    // but alot of duplication, and abstraction
+    // but alot of duplication, and abstraction, or in some cases DTO divergence / type drift
     public sealed record DinnerId(Guid Id) { }
 
     public sealed record MenuReviewId(Guid Id) { }
@@ -26,7 +26,7 @@ namespace BuberDinner.Domain.Menu
         public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewId.ToList();
 
         public HostId HostId { get; }
-        public DateTime CreatedDateTime { get; }
+        public DateTime CreatedDateTime { get; } // = DateTime.UtcNow;
         public DateTime UpdateDateTime { get; }
 
         // domain model should own its identity not database
@@ -48,7 +48,8 @@ namespace BuberDinner.Domain.Menu
         }
 
         // hides logic, factory method (ubiquites lang) why or how the menu is created
-        // rather than just constructor
+        // rather than using constructor, seem to be more inline with anemic than rich model
+        // can reduce cohesion
         public static Menu Create(string name, string description, HostId hostId)
         {
             return new(MenuId.CreateUnique(), name, description, hostId, DateTime.UtcNow, DateTime.UtcNow);

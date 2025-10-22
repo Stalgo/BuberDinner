@@ -1,6 +1,13 @@
+Things to consider:
 
+- anemic vs rich domain model
+- coupling => strongly typed id (duplicate code, code safety)
+- cohesion (anemic model is often less cohesive)
+
+[Article: refactoring from an anemic domain model to a rich-domain-model](https://www.milanjovanovic.tech/blog/refactoring-from-an-anemic-domain-model-to-a-rich-domain-model)
 
 ## Context
+
 ```mermaid
 C4Context
   title System Context Diagram for DuberDinner
@@ -15,6 +22,7 @@ C4Context
 ```
 
 ## Container
+
 ```mermaid
 
 C4Container
@@ -32,9 +40,10 @@ C4Container
   Rel(apiService, database, "Reads/Writes")
 
 
-  ```
+```
 
 ## Component
+
 ```mermaid
 
 C4Component
@@ -55,8 +64,10 @@ C4Component
   Rel(GuestAggregate, MenuAggregate, "Reviews")
 
 
-  ```
+```
+
 ## Code
+
 ```mermaid
 
 classDiagram
@@ -122,15 +133,15 @@ class User {
 }
 
 %% Relationships between aggregates
-Host "0" --> "*" Menu : manages
-Menu "0" --> "*" Dinner : includes
-Host "0" --> "*" Dinner : organizes
-Dinner "0" --> "*" Bill : generates
-Dinner "0" *-- "*" Reservation : has
-Guest "0" *-- "*" GuestRating : has
-MenuReview "*" --> "0" Menu : reviews
-MenuReview "*" --> "0" Guest : writtenBy
-Guest "0" --> "1" User : BelongsTo
-Host "*" --> "0" User : linkedTo
+Host "1" --> "*" Menu : manages
+Menu "1" --> "*" Dinner : includes
+Host "1" --> "*" Dinner : organizes
+Dinner "1" --> "*" Bill : generates
+Dinner "1" *-- "*" Reservation : has
+Guest "1" *-- "*" GuestRating : has
+MenuReview "*" --> "1" Menu : reviews
+MenuReview "*" --> "1" Guest : writtenBy
+Guest "1" --> "1" User : BelongsTo
+Host "*" --> "1" User : linkedTo
 
 ```

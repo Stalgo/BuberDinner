@@ -2,13 +2,6 @@ using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.Menu.ValueObjects
 {
-    //yagni
-    /// <summary>
-    ///
-    /// creating an abstraction of id for menu will make it cross domain boudries when used in other domains
-    /// this will also create alot of boileplate code, but will create more type safety with strong types.
-    ///
-    /// </summary>
     public sealed class MenuId : ValueObject
     {
         public Guid Value { get; }
