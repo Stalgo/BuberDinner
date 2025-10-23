@@ -2,7 +2,7 @@ using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Common.Inferfaces.Persistence;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Domain.Common.Errors;
-using BuberDinner.Domain.User.Entities;
+using BuberDinner.Domain.User;
 using ErrorOr;
 using MediatR;
 
@@ -32,7 +32,7 @@ namespace BuberDinner.Application.Authentication.Commands.Register
             }
 
             // 2.  create user (generate unique id) and persist to db
-            var user = new User(command.FirstName, command.LastName, command.Email, command.Password);
+            var user = User.Create(command.FirstName, command.LastName, command.Email, command.Password);
             _userRepository.Add(user);
 
             // 3. create jwt token :w
