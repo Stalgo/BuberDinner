@@ -19,6 +19,8 @@ namespace BuberDinner.Domain.Dinner
         public int MaxGuests { get; }
         public Price Price { get; }
         public Location Location { get; }
+        public DateTime StartedDateTime { get; }
+        public DateTime EndedDateTime { get; }
         public DateTime CreatedDateTime { get; }
         public DateTime UpdateDateTime { get; }
         public IReadOnlyList<Reservation> Reservations => _reservations.ToList();

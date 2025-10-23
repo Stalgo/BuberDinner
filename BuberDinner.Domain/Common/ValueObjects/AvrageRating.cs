@@ -35,7 +35,7 @@ namespace BuberDinner.Domain.Common.ValueObjects
 
         public override IEnumerable<object> GetEqualityComponents()
         {
-            throw new NotImplementedException();
+            yield return Value;
         }
 
         public override bool Equals(object? obj)
